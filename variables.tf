@@ -5,20 +5,24 @@ variable "template_version" {
 }
 
 # -----------------------------------------------
+# NOMAD JOB VARIABLES
+# -----------------------------------------------
+
+variable "settings" {
+  description = "Parameters used to customize the job. Overrides default values set in template. See README.md for more details."
+  type = object({})
+  default = {}
+}
+
+# -----------------------------------------------
+# TEMPLATE VARIABLES
+# -----------------------------------------------
 
 variable "job_name" {
   description = "The name of the Nomad job"
   type = string
   default = "countdash"
 }
-
-variable "settings" {
-  description = "Parameters used to customize the job. Overrides default values set in template. See README.md for more details."
-  type = any
-  default = {}
-}
-
-# -----------------------------------------------
 
 variable "task_enabled_api" {
   description = "Enable the api-task"

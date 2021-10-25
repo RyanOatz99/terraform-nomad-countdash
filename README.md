@@ -23,6 +23,9 @@ These settings can't be handled by hcl2 variables within the job-file itself.
 | task_enabled_dashboard | bool | true | Include dashboard group in jobfile |
 | expose_dashboard_port | number | 9002 | Expose port on host. Set to 0 or lower to disable |
 
+> These are intentionally added as a single variable to keep the config-files easy to maintain. You can include any
+sub-values, but only the ones actually defined in the template will be used.
+
 #### NOMAD JOB-SETTINGS
 Override defaults in the Nomad job-template using the "settings" variable.
 These are passed to the job-template as a map & added local-variables in the job,
@@ -48,6 +51,9 @@ Any settings NOT included will use the defaults defined in the template.
 | dashboard_api_port | number | 8080 ||
 | sidecar_cpu | number | 100 | Required cpu for sidecar tasks |
 | sidecar_ram  | number | 64 | Required memory for sidecar tasks |
+
+> These are intentionally added as a single variable to keep the config-files easy to maintain. You can include any
+sub-values, but only the ones actually defined in the template will be used.
 
 ## EXAMPLE
 ```hcl
