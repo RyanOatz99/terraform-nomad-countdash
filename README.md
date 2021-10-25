@@ -10,12 +10,20 @@ as a module. An excessive amount of customizable options are intentionally added
 This example uses the [Consul-connect for Nomad](https://www.nomadproject.io/docs/integrations/consul-connect)
 example shown in the Nomad documentation as a basis.
 
-## MODULE VARIABLES
-#### JOB NAME
-The name of the Nomad job is passed directly as a separate value (job_name) as it can't be set by variables
-in the rendered job-file.
+## MODULE CONFIGURATION
 
-#### JOB-SETTINGS
+#### TEMPLATE-CONDITIONALS
+Some customizations by the templatefile-function, are not passed on to the rendered jobfile.
+These settings can't be handled by hcl2 variables within the job-file itself.
+
+| Variable | Type | Default value | Description |
+|----------|------|---------------|-------------|
+| job_name | string | "countdash" | Name of the job in Nomad |
+| task_enabled_api | bool | true | Include api group in jobfile |
+| task_enabled_dashboard | bool | true | Include dashboard group in jobfile |
+| expose_dashboard_port | number | 9002 | Expose port on host. Set to 0 or lower to disable |
+
+#### NOMAD JOB-SETTINGS
 Override defaults in the Nomad job-template using the "settings" variable.
 These are passed to the job-template as a map & added local-variables in the job,
 They are then referenced as "local" hcl2 values within the job-definition.
@@ -40,16 +48,6 @@ Any settings NOT included will use the defaults defined in the template.
 | dashboard_api_port | number | 8080 ||
 | sidecar_cpu | number | 100 | Required cpu for sidecar tasks |
 | sidecar_ram  | number | 64 | Required memory for sidecar tasks |
-
-#### TEMPLATE-CONDITIONALS
-Some template-customizations are handled by the templatefile-function, before creating the rendered jobfile.
-These are settings that can't be handled by hcl2 variables within the job-file.
-
-| Variable | Type | Default value | Description |
-|----------|------|---------------|-------------|
-| task_enabled_api | bool | true | Include api group in jobfile |
-| task_enabled_dashboard | bool | true | Include dashboard group in jobfile |
-| expose_dashboard_port | number | 9002 | Expose port on host. Set to 0 or lower to disable |
 
 ## EXAMPLE
 ```hcl
