@@ -2,7 +2,7 @@
 # NOMAD JOB
 # ===============================================
 
-job "${JOB}" {
+job "${TPL.job_name}" {
   datacenters = local.datacenters
   namespace = local.namespace
 %{~ if TPL.task_enabled_api }
