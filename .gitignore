@@ -1,10 +1,11 @@
 # FILES
-.tfplan
-.tfvars
-.tfstate
-.tfstate.backup
-.terraform.lock.hcl
+*.tfplan
+*.tfvars
+*.tfstate
+*.tfstate.backup
+*.terraform.lock.hcl
 
 # FOLDERS
-**/.terraform/*
-**/.credentials/*
+**/.terraform/
+**/.credentials/
+**/.test/
