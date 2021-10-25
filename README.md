@@ -34,7 +34,7 @@ Any settings NOT included will use the defaults defined in the template.
 | dashboard_count | number | 1 | Number of "count-dashboard" tasks |
 | dashboard_cpu | number | 100 | Required task cpu |
 | dashboard_ram | number | 64 | Required task memory |
-| dashboard_image | string | Container image to use for task |
+| dashboard_image | string | "hashicorpnomad/counter-dashboard:v3" | Container image to use for task |
 | dashboard_port | number | 9002 | Port for publishing dashboard |
 | dashboard_service | string | "count-dashboard" | dashboard service-name (consul) |
 | dashboard_api_port | number | 8080 ||
@@ -47,8 +47,8 @@ These are settings that can't be handled by hcl2 variables within the job-file.
 
 | Variable | Type | Default value | Description |
 |----------|------|---------------|-------------|
-| task_enabled_api | bool | true ||
-| task_enabled_dashboard | bool | true ||
+| task_enabled_api | bool | true | Include api group in jobfile |
+| task_enabled_dashboard | bool | true | Include dashboard group in jobfile |
 | expose_dashboard_port | number | 9002 | Expose port on host. Set to 0 or lower to disable |
 
 ## EXAMPLE
