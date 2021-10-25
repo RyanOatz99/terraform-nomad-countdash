@@ -1,4 +1,4 @@
 output "rendered_job" {
-  description = "Rendered job"
+  description = "Rendered jobspec"
   value = nomad_job.JOB.jobspec
 }
